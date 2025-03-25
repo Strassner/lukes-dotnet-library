@@ -1,0 +1,58 @@
+﻿@{
+	ViewData["Title"] = "BookShelf";
+	String[] selectOptions = ["Title Asc.", "Title Desc.", "Author Asc.", 
+								"Author Desc.", "Rating Asc.", "Rating Desc."];
+}
+@model List<Book>;
+
+<h1 class="col-6">Luke's Bookshelf</h1>
+<div class="d-flex m-3 justify-content-center align-content-center">
+	<form method="get" class="d-flex justify-content-around flex-grow-1 ms-3">
+		<select class="" name="sortKey" id="sortKey">
+			@foreach(var option in selectOptions)
+			{
+				if(option == ViewBag.SortKey){
+					<option value="@option" selected>@option</option>
+				}
+				else{
+					<option value="@option">@option</option>
+				}
+			}
+		</select>
+		<div class="form-check form-switch m-3">
+			@* Sticky checkbox *@
+			@if (ViewBag.ReadFilter)
+			{
+				<input type="checkbox" name="readFilter" id="Read" class="form-check-input" value="true" checked />
+			}else
+			{
+				<input type="checkbox" name="readFilter" id="Read" class="form-check-input" value="true" />
+			}
+			<label class="form-check-label" for="Read">Read</label>
+		</div>
+		@*Sticky searchbar*@
+		<input type="text" name="searchString" class="form-control" value="@ViewBag.SearchString" placeholder="Search a title or author" />
+		<button class="btn btn-outline-info w-25" type="submit" asp-action="BookShelf">Filter</button>
+		<a asp-action="Create" class="btn btn-outline-primary w-25 align-content-center">Add Book</a>
+	</form>
+</div>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Rating</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var book in Model) {
+			<tr>
+				<td>@book.Title</td>
+				<td>@book.Author</td>
+				<td>@(book.Read ? book.Rating : "Unread")</td>
+				<td><a asp-action="Edit" class="btn btn-outline-secondary" asp-route-id="@book.Id">Edit</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

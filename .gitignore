@@ -396,3 +396,62 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+# User-specific files
+.vs/
+.vscode/
+.idea/
+
+# User-specific files for Visual Studio for Mac
+.vscode/
+.idea/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer log files
+*.cab
+
+# Windows Installer files for VS2019
+*.pdb
+*.dll
+*.exe
+*.vshost.*
+.vs2019/
+
+# ASP.NET Core and ASP.NET MVC
+project.lock.json
+project.fragment.lock.json
+npm-debug.log
+bower_components/
+node_modules/
+wwwroot/lib/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]eploy/
+[Dd]ebug/
+[Dd]ebugSrc/
+[Dd]ebugPublic/
+[Dd]eploy/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+.idea/
+.vscode/
+.vs/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp

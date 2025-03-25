@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = "Edit Book";
+}
+@model Book;
+
+
+<h1>Edit Book</h1>
+<form method="post">
+	<input type="hidden" asp-for="Id" value="@Model.Id"/>
+	<div class="form-floating m-3">
+		<input type="text" asp-for="Title" id="Title" class="form-control" placeholder="Title" />
+		<label class="form-label" for="Title">Title</label>
+	</div>
+	<div class="form-floating m-3">
+		<input type="text" asp-for="Author" id="Author" class="form-control" placeholder="Author" />
+		<label class="form-label" for="Author">Author</label>
+	</div>
+	<div class="form-floating m-3">
+		<input type="number" class="form-control" asp-for="Rating" id="Rating" max="5" onchange="maxRating()" placeholder="Rating" />
+		<label class="" for="Rating">Rating</label>
+	</div>
+	<div class="form-check form-switch m-3">
+		<input type="checkbox" asp-for="Read" id="Read" class="form-check-input" />
+		<label class="form-check-label" for="Read">Read</label>
+	</div>
+	<div class="btn-group">
+		<button type="submit" asp-action="Edit" class="btn btn-success m-3">Submit</button>
+		<button type="submit" asp-action="Delete" class="btn btn-danger m-3">Delete</button>
+	</div>
+</form>
+
+
+@section Scripts {
+	<script>
+		//some form validation, limit rating to 5
+		function maxRating(){
+			var rating = document.getElementById("Rating");
+			console.log("Rating: " + rating.value);
+
+			if (rating.value > 5){
+				console.log("Rating: " + rating);
+				rating.value = 5;
+				document.getElementById("Rating").value = 5;
+			}
+		}
+	</script>
+}
