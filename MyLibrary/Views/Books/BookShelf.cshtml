@@ -6,9 +6,10 @@
 @model List<Book>;
 
 <h1 class="col-6">Luke's Bookshelf</h1>
-<div class="d-flex m-3 justify-content-center align-content-center">
-	<form method="get" class="d-flex justify-content-around flex-grow-1 ms-3">
-		<select class="" name="sortKey" id="sortKey">
+<div class="container">
+	<form method="get" class="row ms-3 justify-content-between">
+		<div class="col-md-2 m-2 container row">
+		<select class="col-md m-1" name="sortKey" id="sortKey">
 			@foreach(var option in selectOptions)
 			{
 				if(option == ViewBag.SortKey){
@@ -19,7 +20,7 @@
 				}
 			}
 		</select>
-		<div class="form-check form-switch m-3">
+		<div class="col-md-1 form-check form-switch m-1">
 			@* Sticky checkbox *@
 			@if (ViewBag.ReadFilter)
 			{
@@ -28,12 +29,13 @@
 			{
 				<input type="checkbox" name="readFilter" id="Read" class="form-check-input" value="true" />
 			}
-			<label class="form-check-label" for="Read">Read</label>
+			<label class="form-check-label align-self-center" for="Read">Read</label>
+		</div>
 		</div>
 		@*Sticky searchbar*@
-		<input type="text" name="searchString" class="form-control" value="@ViewBag.SearchString" placeholder="Search a title or author" />
-		<button class="btn btn-outline-info w-25" type="submit" asp-action="BookShelf">Filter</button>
-		<a asp-action="Create" class="btn btn-outline-primary w-25 align-content-center">Add Book</a>
+		<input type="text" name="searchString" class="form-control col-md m-2" value="@ViewBag.SearchString" placeholder="Search a title or author" />
+		<button class="btn btn-outline-info col-md-1 m-2" type="submit" asp-action="BookShelf">Filter</button>
+		<a asp-action="Create" class="btn btn-outline-primary col-md-1 m-2 align-content-center">Add Book</a>
 	</form>
 </div>
 <table class="table table-striped table-bordered">
